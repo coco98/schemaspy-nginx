@@ -1,0 +1,328 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<database name="hasuradb" schema="public" type="PostgreSQL - 9.6.5">
+   <tables>
+      <table name="area" numRows="0" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('area_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial"/>
+         <column autoUpdated="false" digits="0" id="1" name="city_id" nullable="false" remarks="" size="10" type="int4"/>
+         <column autoUpdated="false" digits="0" id="2" name="location_data" nullable="false" remarks="" size="2147483647" type="text"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+      </table>
+      <table name="hawker_b_out" numRows="0" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('hawker_b_out_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial"/>
+         <column autoUpdated="false" digits="0" id="1" name="hawker_id" nullable="false" remarks="" size="10" type="int4"/>
+         <column autoUpdated="false" digits="0" id="2" name="pos_id" nullable="false" remarks="" size="10" type="int4"/>
+         <column autoUpdated="false" digits="0" id="3" name="op_id" nullable="false" remarks="" size="2147483647" type="text"/>
+         <column autoUpdated="false" digits="0" id="4" name="weight" nullable="false" remarks="" size="131089" type="numeric"/>
+         <column autoUpdated="false" digits="0" id="5" name="product_id" nullable="false" remarks="" size="10" type="int4"/>
+         <column autoUpdated="false" digits="6" id="6" name="created" nullable="false" remarks="" size="35" type="timestamptz"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+      </table>
+      <table name="hawker_purchase_order" numRows="0" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('hawker_purchase_order_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial">
+            <child column="hawker_purchase_order_id" foreignKey="hawker_purchase_order_crate_hawker_purchase_order_id_fkey" implied="false" onDeleteCascade="false" table="hawker_purchase_order_crate"/>
+         </column>
+         <column autoUpdated="false" digits="6" id="1" name="created" nullable="false" remarks="" size="35" type="timestamptz"/>
+         <column autoUpdated="false" digits="0" id="2" name="gm_id" nullable="true" remarks="" size="10" type="int4"/>
+         <column autoUpdated="false" digits="0" id="3" name="comments" nullable="true" remarks="" size="2147483647" type="text"/>
+         <column autoUpdated="false" digits="0" id="4" name="transport_group_id" nullable="true" remarks="" size="10" type="int4"/>
+         <column autoUpdated="false" digits="0" id="5" name="active" nullable="true" remarks="" size="1" type="bool"/>
+         <column autoUpdated="false" digits="0" id="6" name="list0_id" nullable="true" remarks="" size="10" type="int4"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+      </table>
+      <table name="hawker_purchase_order_crate" numRows="0" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('hawker_purchase_order_crate_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial"/>
+         <column autoUpdated="false" digits="0" id="1" name="hawker_id" nullable="false" remarks="" size="10" type="int4"/>
+         <column autoUpdated="false" digits="0" id="2" name="product_id" nullable="false" remarks="" size="10" type="int4"/>
+         <column autoUpdated="false" digits="0" id="3" name="no_crates" nullable="false" remarks="" size="10" type="int4"/>
+         <column autoUpdated="false" digits="0" id="4" name="comments" nullable="false" remarks="" size="2147483647" type="text"/>
+         <column autoUpdated="false" digits="0" id="5" name="gm_id" nullable="false" remarks="" size="10" type="int4"/>
+         <column autoUpdated="false" digits="0" id="6" name="active" nullable="false" remarks="" size="1" type="bool"/>
+         <column autoUpdated="false" digits="0" id="7" name="hawker_purchase_order_id" nullable="false" remarks="" size="10" type="int4">
+            <parent column="id" foreignKey="hawker_purchase_order_crate_hawker_purchase_order_id_fkey" implied="false" onDeleteCascade="false" table="hawker_purchase_order"/>
+         </column>
+         <column autoUpdated="false" defaultValue="now()" digits="6" id="8" name="updated" nullable="true" remarks="" size="35" type="timestamptz"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+      </table>
+      <table name="hawker_retail_bill" numRows="0" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('hawker_retail_bill_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial"/>
+         <column autoUpdated="false" digits="0" id="1" name="hawker_id" nullable="false" remarks="" size="10" type="int4"/>
+         <column autoUpdated="false" digits="0" id="2" name="pos_id" nullable="false" remarks="" size="10" type="int4"/>
+         <column autoUpdated="false" digits="0" id="3" name="op_id" nullable="false" remarks="" size="2147483647" type="text"/>
+         <column autoUpdated="false" digits="0" id="4" name="phone_no" nullable="false" remarks="" size="2147483647" type="text"/>
+         <column autoUpdated="false" digits="0" id="5" name="parchuran " nullable="false" remarks="" size="10" type="int4"/>
+         <column autoUpdated="false" digits="0" id="6" name="amount" nullable="false" remarks="" size="131089" type="numeric"/>
+         <column autoUpdated="false" digits="6" id="7" name="created" nullable="false" remarks="" size="35" type="timestamptz"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+      </table>
+      <table name="hawker_retail_bill_item" numRows="0" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('hawker_retail_bill_item_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial"/>
+         <column autoUpdated="false" digits="0" id="1" name="product_id" nullable="false" remarks="" size="10" type="int4"/>
+         <column autoUpdated="false" digits="0" id="2" name="weight" nullable="false" remarks="" size="131089" type="numeric"/>
+         <column autoUpdated="false" digits="0" id="3" name="quotation" nullable="false" remarks="" size="131089" type="numeric"/>
+         <column autoUpdated="false" digits="0" id="4" name="amount" nullable="false" remarks="" size="131089" type="numeric"/>
+         <column autoUpdated="false" digits="0" id="5" name="hawker_retail_bill_id" nullable="false" remarks="" size="10" type="int4"/>
+         <column autoUpdated="false" digits="6" id="6" name="created" nullable="false" remarks="" size="35" type="timestamptz"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+      </table>
+      <table name="hawker_retail_bill_transaction" numRows="0" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('hawker_retail_bill_transaction_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial"/>
+         <column autoUpdated="false" digits="0" id="1" name="from_customer_id" nullable="false" remarks="" size="10" type="int4"/>
+         <column autoUpdated="false" digits="0" id="2" name="to_hawker_id" nullable="false" remarks="" size="10" type="int4"/>
+         <column autoUpdated="false" digits="0" id="3" name="amount" nullable="false" remarks="" size="131089" type="numeric"/>
+         <column autoUpdated="false" digits="0" id="4" name="hawker_retail_bill_id" nullable="false" remarks="" size="10" type="int4"/>
+         <column autoUpdated="false" digits="6" id="5" name="created" nullable="false" remarks="" size="35" type="timestamptz"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+      </table>
+      <table name="hawker_stock_count" numRows="0" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('hawker_stock_count_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial"/>
+         <column autoUpdated="false" digits="0" id="1" name="hawker_id" nullable="false" remarks="" size="10" type="int4"/>
+         <column autoUpdated="false" digits="0" id="2" name="pos_id" nullable="false" remarks="" size="10" type="int4"/>
+         <column autoUpdated="false" digits="0" id="3" name="op_id" nullable="false" remarks="" size="10" type="int4"/>
+         <column autoUpdated="false" digits="0" id="4" name="crate_id" nullable="false" remarks="" size="10" type="int4"/>
+         <column autoUpdated="false" digits="0" id="5" name="product_id" nullable="false" remarks="" size="10" type="int4"/>
+         <column autoUpdated="false" digits="0" id="6" name="weight" nullable="false" remarks="" size="131089" type="numeric"/>
+         <column autoUpdated="false" digits="6" id="7" name="created" nullable="false" remarks="" size="35" type="timestamptz"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+      </table>
+      <table name="hawker_stock_in" numRows="0" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('hawker_stock_in_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial"/>
+         <column autoUpdated="false" digits="0" id="1" name="hawker_id" nullable="false" remarks="" size="10" type="int4"/>
+         <column autoUpdated="false" digits="0" id="2" name="pos_id" nullable="false" remarks="" size="10" type="int4"/>
+         <column autoUpdated="false" digits="0" id="3" name="op_id" nullable="false" remarks="" size="2147483647" type="text"/>
+         <column autoUpdated="false" digits="0" id="4" name="crate_id" nullable="false" remarks="" size="10" type="int4"/>
+         <column autoUpdated="false" digits="0" id="5" name="weight" nullable="false" remarks="" size="131089" type="numeric"/>
+         <column autoUpdated="false" digits="6" id="6" name="created" nullable="false" remarks="" size="35" type="timestamptz"/>
+         <column autoUpdated="false" digits="0" id="7" name="product_id" nullable="true" remarks="" size="10" type="int4"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+      </table>
+      <table name="hawker_stock_out" numRows="0" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('hawker_stock_out_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial"/>
+         <column autoUpdated="false" digits="0" id="1" name="hawker_id" nullable="false" remarks="" size="10" type="int4"/>
+         <column autoUpdated="false" digits="0" id="2" name="pos_id" nullable="false" remarks="" size="10" type="int4"/>
+         <column autoUpdated="false" digits="0" id="3" name="op_id" nullable="false" remarks="" size="2147483647" type="text"/>
+         <column autoUpdated="false" digits="0" id="4" name="crate_id" nullable="false" remarks="" size="10" type="int4"/>
+         <column autoUpdated="false" digits="0" id="5" name="weight" nullable="false" remarks="" size="131089" type="numeric"/>
+         <column autoUpdated="false" digits="6" id="6" name="created" nullable="false" remarks="" size="35" type="timestamptz"/>
+         <column autoUpdated="false" digits="0" id="7" name="product_id" nullable="false" remarks="" size="10" type="int4"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+      </table>
+      <table name="hawker_wastage_out" numRows="0" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('hawker_wastage_out_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial"/>
+         <column autoUpdated="false" digits="0" id="1" name="hawker_id" nullable="false" remarks="" size="10" type="int4"/>
+         <column autoUpdated="false" digits="0" id="2" name="pos_id" nullable="false" remarks="" size="10" type="int4"/>
+         <column autoUpdated="false" digits="0" id="3" name="op_id" nullable="false" remarks="" size="2147483647" type="text"/>
+         <column autoUpdated="false" digits="0" id="4" name="weight" nullable="false" remarks="" size="131089" type="numeric"/>
+         <column autoUpdated="false" digits="0" id="5" name="product_id" nullable="false" remarks="" size="10" type="int4"/>
+         <column autoUpdated="false" digits="6" id="6" name="created" nullable="false" remarks="" size="35" type="timestamptz"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+      </table>
+      <table name="list0" numRows="0" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('list0_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial"/>
+         <column autoUpdated="false" defaultValue="'2017-09-24 14:18:03.395025+00'::timestamp with time zone" digits="6" id="1" name="updated" nullable="false" remarks="" size="35" type="timestamptz"/>
+         <column autoUpdated="false" digits="0" id="2" name="comments" nullable="false" remarks="" size="2147483647" type="text"/>
+         <column autoUpdated="false" digits="0" id="3" name="active" nullable="false" remarks="" size="1" type="bool"/>
+         <column autoUpdated="false" digits="0" id="4" name="gm_id" nullable="false" remarks="" size="10" type="int4"/>
+         <column autoUpdated="false" digits="0" id="5" name="market_id" nullable="true" remarks="" size="10" type="int4"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+      </table>
+      <table name="list3" numRows="0" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('list3_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial"/>
+         <column autoUpdated="false" digits="6" id="1" name="updated" nullable="false" remarks="" size="35" type="timestamptz"/>
+         <column autoUpdated="false" digits="0" id="2" name="comments" nullable="false" remarks="" size="2147483647" type="text"/>
+         <column autoUpdated="false" digits="0" id="3" name="active" nullable="false" remarks="" size="1" type="bool"/>
+         <column autoUpdated="false" digits="0" id="4" name="gm_id" nullable="false" remarks="" size="10" type="int4"/>
+         <column autoUpdated="false" digits="0" id="5" name="market_id" nullable="false" remarks="" size="10" type="int4"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+      </table>
+      <table name="list3_hawker_purchase_order" numRows="0" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="false" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="int4"/>
+         <column autoUpdated="false" digits="6" id="1" name="created" nullable="false" remarks="" size="35" type="timestamptz"/>
+         <column autoUpdated="false" digits="0" id="2" name="gm_id" nullable="false" remarks="" size="10" type="int4"/>
+         <column autoUpdated="false" digits="0" id="3" name="comments" nullable="false" remarks="" size="2147483647" type="text"/>
+         <column autoUpdated="false" digits="0" id="4" name="transport_group_id" nullable="false" remarks="" size="10" type="int4"/>
+         <column autoUpdated="false" digits="0" id="5" name="active " nullable="false" remarks="" size="1" type="bool"/>
+         <column autoUpdated="false" digits="0" id="6" name="list3_id" nullable="false" remarks="" size="10" type="int4"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+      </table>
+      <table name="list3_hawker_purchase_order_crate" numRows="0" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('list3_hawker_purchase_order_crate_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial"/>
+         <column autoUpdated="false" digits="0" id="1" name="hawker_id" nullable="false" remarks="" size="10" type="int4"/>
+         <column autoUpdated="false" digits="0" id="2" name="product_id" nullable="false" remarks="" size="10" type="int4"/>
+         <column autoUpdated="false" digits="0" id="3" name="no_crates" nullable="false" remarks="" size="10" type="int4"/>
+         <column autoUpdated="false" digits="0" id="4" name="comments" nullable="false" remarks="" size="2147483647" type="text"/>
+         <column autoUpdated="false" digits="0" id="5" name="gm_id" nullable="false" remarks="" size="10" type="int4"/>
+         <column autoUpdated="false" digits="0" id="6" name="active" nullable="false" remarks="" size="1" type="bool"/>
+         <column autoUpdated="false" digits="0" id="7" name="list3_hawker_purchase_order_id" nullable="false" remarks="" size="10" type="int4"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+      </table>
+      <table name="personnel_account" numRows="0" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('personnel_account_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial"/>
+         <column autoUpdated="false" digits="0" id="1" name="account_type " nullable="false" remarks="" size="2147483647" type="text"/>
+         <column autoUpdated="false" digits="0" id="2" name="personnel_id" nullable="false" remarks="" size="10" type="int4"/>
+         <column autoUpdated="false" digits="6" id="3" name="created" nullable="false" remarks="" size="35" type="timestamptz"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+      </table>
+      <table name="pm_bulk_stock_in" numRows="0" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('pm_bulk_stock_in_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial"/>
+         <column autoUpdated="false" digits="0" id="1" name="pm_id" nullable="false" remarks="" size="10" type="int4"/>
+         <column autoUpdated="false" digits="0" id="2" name="pos_id" nullable="false" remarks="" size="10" type="int4"/>
+         <column autoUpdated="false" digits="0" id="3" name="op_id" nullable="false" remarks="" size="10" type="int4"/>
+         <column autoUpdated="false" digits="0" id="4" name="crate_id" nullable="false" remarks="" size="10" type="int4"/>
+         <column autoUpdated="false" digits="0" id="5" name="weight" nullable="false" remarks="" size="131089" type="numeric"/>
+         <column autoUpdated="false" digits="6" id="6" name="created" nullable="false" remarks="" size="35" type="timestamptz"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+      </table>
+      <table name="pm_retail_bill" numRows="0" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('pm_retail_bill_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial"/>
+         <column autoUpdated="false" digits="0" id="1" name="pm_id" nullable="false" remarks="" size="10" type="int4"/>
+         <column autoUpdated="false" digits="0" id="2" name="pos_id" nullable="false" remarks="" size="10" type="int4"/>
+         <column autoUpdated="false" digits="0" id="3" name="op_id" nullable="false" remarks="" size="2147483647" type="text"/>
+         <column autoUpdated="false" digits="0" id="4" name="amount" nullable="false" remarks="" size="131089" type="numeric"/>
+         <column autoUpdated="false" digits="6" id="5" name="created" nullable="false" remarks="" size="35" type="timestamptz"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+      </table>
+      <table name="pm_retail_bill_item" numRows="0" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('pm_retail_bill_item_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial"/>
+         <column autoUpdated="false" digits="0" id="1" name="pm_retail_bill_id" nullable="false" remarks="" size="10" type="int4"/>
+         <column autoUpdated="false" digits="0" id="2" name="product_id" nullable="false" remarks="" size="10" type="int4"/>
+         <column autoUpdated="false" digits="0" id="3" name="quotation" nullable="false" remarks="" size="131089" type="numeric"/>
+         <column autoUpdated="false" digits="0" id="4" name="weight" nullable="false" remarks="" size="131089" type="numeric"/>
+         <column autoUpdated="false" digits="0" id="5" name="amount" nullable="false" remarks="" size="131089" type="numeric"/>
+         <column autoUpdated="false" digits="6" id="6" name="created" nullable="false" remarks="" size="35" type="timestamptz"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+      </table>
+      <table name="pm_retail_bill_transaction" numRows="0" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('pm_retail_bill_transaction_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial"/>
+         <column autoUpdated="false" digits="0" id="1" name="from_bulk_customer_id" nullable="false" remarks="" size="10" type="int4"/>
+         <column autoUpdated="false" digits="0" id="2" name="to_pm_id" nullable="false" remarks="" size="10" type="int4"/>
+         <column autoUpdated="false" digits="0" id="3" name="amount" nullable="false" remarks="" size="131089" type="numeric"/>
+         <column autoUpdated="false" digits="0" id="4" name="pm_retail_bill_id" nullable="false" remarks="" size="10" type="int4"/>
+         <column autoUpdated="false" digits="6" id="5" name="created" nullable="false" remarks="" size="35" type="timestamptz"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+      </table>
+      <table name="pm_stock_count" numRows="0" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('pm_stock_count_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial"/>
+         <column autoUpdated="false" digits="0" id="1" name="pm_id" nullable="false" remarks="" size="10" type="int4"/>
+         <column autoUpdated="false" digits="0" id="2" name="pos_id" nullable="false" remarks="" size="10" type="int4"/>
+         <column autoUpdated="false" digits="0" id="3" name="op_id" nullable="false" remarks="" size="2147483647" type="text"/>
+         <column autoUpdated="false" digits="0" id="4" name="crate_id" nullable="false" remarks="" size="10" type="int4"/>
+         <column autoUpdated="false" digits="0" id="5" name="product_id" nullable="false" remarks="" size="10" type="int4"/>
+         <column autoUpdated="false" digits="0" id="6" name="weight" nullable="false" remarks="" size="131089" type="numeric"/>
+         <column autoUpdated="false" digits="0" id="7" name="grade" nullable="false" remarks="" size="2147483647" type="text"/>
+         <column autoUpdated="false" digits="6" id="8" name="created" nullable="false" remarks="" size="35" type="timestamptz"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+      </table>
+      <table name="pm_wastage_out" numRows="0" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('pm_wastage_out_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial"/>
+         <column autoUpdated="false" digits="0" id="1" name="pm_id" nullable="false" remarks="" size="10" type="int4"/>
+         <column autoUpdated="false" digits="0" id="2" name="pos_id" nullable="false" remarks="" size="10" type="int4"/>
+         <column autoUpdated="false" digits="0" id="3" name="op_id" nullable="false" remarks="" size="2147483647" type="text"/>
+         <column autoUpdated="false" digits="0" id="4" name="product_id" nullable="false" remarks="" size="10" type="int4"/>
+         <column autoUpdated="false" digits="0" id="5" name="weight" nullable="false" remarks="" size="131089" type="numeric"/>
+         <column autoUpdated="false" digits="6" id="6" name="created" nullable="false" remarks="" size="35" type="timestamptz"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+      </table>
+      <table name="procurement_manager" numRows="0" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('procurement_manager_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial"/>
+         <column autoUpdated="false" digits="0" id="1" name="personnel_id" nullable="false" remarks="" size="10" type="int4"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+      </table>
+      <table name="transaction" numRows="0" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('transaction_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial"/>
+         <column autoUpdated="false" digits="0" id="1" name="from_personnel_account" nullable="false" remarks="" size="10" type="int4"/>
+         <column autoUpdated="false" digits="0" id="2" name="to_personnel_account" nullable="false" remarks="" size="10" type="int4"/>
+         <column autoUpdated="false" digits="0" id="3" name="amount" nullable="false" remarks="" size="131089" type="numeric"/>
+         <column autoUpdated="false" digits="6" id="4" name="created" nullable="false" remarks="" size="35" type="timestamptz"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+      </table>
+      <table name="transport_group" numRows="0" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('transport_group_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial">
+            <child column="transport_group_id" foreignKey="transport_procurement_manager_transport_group_id_fkey" implied="false" onDeleteCascade="false" table="transport_procurement_manager"/>
+            <child column="transport_group_id" foreignKey="transporter_transport_group_id_fkey" implied="false" onDeleteCascade="false" table="transporter"/>
+         </column>
+         <column autoUpdated="false" digits="0" id="1" name="area_id" nullable="false" remarks="" size="10" type="int4"/>
+         <column autoUpdated="false" digits="0" id="2" name="created" nullable="false" remarks="" size="10" type="int4"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+      </table>
+      <table name="transport_procurement_manager" numRows="0" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('transport_procurement_manager_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial"/>
+         <column autoUpdated="false" digits="0" id="1" name="transport_group_id" nullable="false" remarks="" size="10" type="int4">
+            <parent column="id" foreignKey="transport_procurement_manager_transport_group_id_fkey" implied="false" onDeleteCascade="false" table="transport_group"/>
+         </column>
+         <column autoUpdated="false" digits="0" id="2" name="procurement_manager_id" nullable="false" remarks="" size="10" type="int4"/>
+         <column autoUpdated="false" digits="6" id="3" name="created" nullable="false" remarks="" size="35" type="timestamptz"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+      </table>
+      <table name="transporter" numRows="0" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('transporter_personnel_id_seq'::regclass)" digits="0" id="0" name="personnel_id" nullable="false" remarks="" size="10" type="serial"/>
+         <column autoUpdated="false" digits="0" id="1" name="transport_group_id" nullable="false" remarks="" size="10" type="int4">
+            <parent column="id" foreignKey="transporter_transport_group_id_fkey" implied="false" onDeleteCascade="false" table="transport_group"/>
+         </column>
+         <column autoUpdated="false" digits="6" id="2" name="created" nullable="false" remarks="" size="35" type="timestamptz"/>
+         <column autoUpdated="false" digits="0" id="3" name="truck_details" nullable="false" remarks="" size="2147483647" type="text"/>
+         <column autoUpdated="false" digits="0" id="4" name="tonnage" nullable="false" remarks="" size="131089" type="numeric"/>
+         <column autoUpdated="false" digits="0" id="5" name="crate_capacity" nullable="false" remarks="" size="10" type="int4"/>
+         <column autoUpdated="false" digits="0" id="6" name="vehicle_no" nullable="false" remarks="" size="2147483647" type="text"/>
+         <column autoUpdated="false" digits="6" id="7" name="updated" nullable="false" remarks="" size="35" type="timestamptz"/>
+         <column autoUpdated="false" digits="0" id="8" name="truck_photo" nullable="false" remarks="" size="2147483647" type="text"/>
+         <primaryKey column="personnel_id" sequenceNumberInPK="1"/>
+      </table>
+      <table name="transporter_pofsi" numRows="0" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('transporter_pofsi_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial">
+            <child column="transporter_pofsi_id" foreignKey="transporter_pofsi_item_transporter_pofsi_id_fkey" implied="false" onDeleteCascade="false" table="transporter_pofsi_item"/>
+         </column>
+         <column autoUpdated="false" digits="0" id="1" name="transporter_id" nullable="false" remarks="" size="10" type="int4"/>
+         <column autoUpdated="false" digits="0" id="2" name="pos_id" nullable="false" remarks="" size="10" type="int4"/>
+         <column autoUpdated="false" digits="0" id="3" name="op_id" nullable="false" remarks="" size="2147483647" type="text"/>
+         <column autoUpdated="false" digits="6" id="4" name="started" nullable="false" remarks="" size="35" type="timestamptz"/>
+         <column autoUpdated="false" digits="6" id="5" name="finished" nullable="false" remarks="" size="35" type="timestamptz"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+      </table>
+      <table name="transporter_pofsi_item" numRows="0" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('transporter_pofsi_item_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial"/>
+         <column autoUpdated="false" digits="0" id="1" name="product_id" nullable="false" remarks="" size="10" type="int4"/>
+         <column autoUpdated="false" digits="0" id="2" name="crate_id" nullable="false" remarks="" size="10" type="int4"/>
+         <column autoUpdated="false" digits="0" id="3" name="weight" nullable="false" remarks="" size="131089" type="numeric"/>
+         <column autoUpdated="false" digits="0" id="4" name="transporter_pofsi_id" nullable="false" remarks="" size="10" type="int4">
+            <parent column="id" foreignKey="transporter_pofsi_item_transporter_pofsi_id_fkey" implied="false" onDeleteCascade="false" table="transporter_pofsi"/>
+         </column>
+         <column autoUpdated="false" defaultValue="now()" digits="6" id="5" name="created" nullable="false" remarks="" size="35" type="timestamptz"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+      </table>
+      <table name="warehouse_purchase_order" numRows="0" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('warehouse_purchase_order_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial">
+            <child column="warehouse_purchase_order_id" foreignKey="warehouse_purchase_order_crate_warehouse_purchase_order_id_fkey" implied="false" onDeleteCascade="false" table="warehouse_purchase_order_crate"/>
+         </column>
+         <column autoUpdated="false" digits="6" id="1" name="created" nullable="false" remarks="" size="35" type="timestamptz"/>
+         <column autoUpdated="false" digits="0" id="2" name="list0_id" nullable="true" remarks="" size="10" type="int4"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+      </table>
+      <table name="warehouse_purchase_order_crate" numRows="0" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('warehouse_purchase_order_crate_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial"/>
+         <column autoUpdated="false" digits="0" id="1" name="warehouse_id" nullable="false" remarks="" size="10" type="int4"/>
+         <column autoUpdated="false" digits="0" id="2" name="no_crates" nullable="false" remarks="" size="10" type="int4"/>
+         <column autoUpdated="false" digits="0" id="3" name="gm_id" nullable="false" remarks="" size="10" type="int4"/>
+         <column autoUpdated="false" digits="0" id="4" name="active" nullable="false" remarks="" size="10" type="int4"/>
+         <column autoUpdated="false" digits="0" id="5" name="warehouse_purchase_order_id" nullable="false" remarks="" size="10" type="int4">
+            <parent column="id" foreignKey="warehouse_purchase_order_crate_warehouse_purchase_order_id_fkey" implied="false" onDeleteCascade="false" table="warehouse_purchase_order"/>
+         </column>
+         <column autoUpdated="false" digits="0" id="6" name="transport_group_id" nullable="false" remarks="" size="10" type="int4"/>
+         <column autoUpdated="false" digits="0" id="7" name="comments" nullable="true" remarks="" size="2147483647" type="text"/>
+         <column autoUpdated="false" defaultValue="now()" digits="6" id="8" name="updated" nullable="true" remarks="" size="35" type="timestamptz"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+      </table>
+      <table name="warehouse_purchase_order_kg" numRows="0" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('warehouse_purchase_order_kg_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial"/>
+         <column autoUpdated="false" digits="0" id="1" name="hawker_id" nullable="false" remarks="" size="10" type="int4"/>
+         <column autoUpdated="false" digits="0" id="2" name="product_id" nullable="false" remarks="" size="10" type="int4"/>
+         <column autoUpdated="false" digits="0" id="3" name="kg" nullable="false" remarks="" size="131089" type="numeric"/>
+         <column autoUpdated="false" digits="0" id="4" name="gm_id" nullable="false" remarks="" size="10" type="int4"/>
+         <column autoUpdated="false" digits="0" id="5" name="active" nullable="false" remarks="" size="1" type="bool"/>
+         <column autoUpdated="false" digits="0" id="6" name="warehouse_purchase_order_id" nullable="false" remarks="" size="10" type="int4"/>
+         <column autoUpdated="false" digits="0" id="7" name="transport_group_id" nullable="false" remarks="" size="10" type="int4"/>
+         <column autoUpdated="false" digits="0" id="8" name="comments" nullable="false" remarks="" size="2147483647" type="text"/>
+         <column autoUpdated="false" defaultValue="now()" digits="6" id="9" name="updated" nullable="true" remarks="" size="35" type="timestamptz"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+      </table>
+   </tables>
+</database>

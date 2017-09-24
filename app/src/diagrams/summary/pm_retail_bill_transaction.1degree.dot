@@ -1,0 +1,35 @@
+// dot 2.38.0 on Linux 4.4.84-boot2docker
+// SchemaSpy rev 590
+digraph "pm_retail_bill_transaction" {
+  graph [
+    rankdir="RL"
+    bgcolor="#f7f7f7"
+    nodesep="0.18"
+    ranksep="0.46"
+    fontname="Helvetica"
+    fontsize="11"
+  ];
+  node [
+    fontname="Helvetica"
+    fontsize="11"
+    shape="plaintext"
+  ];
+  edge [
+    arrowsize="0.8"
+  ];
+  "pm_retail_bill_transaction" [
+    label=<
+    <TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" BGCOLOR="#ffffff">
+      <TR><TD COLSPAN="3" BGCOLOR="#9bab96" ALIGN="CENTER">pm_retail_bill_transaction</TD></TR>
+      <TR><TD PORT="id" COLSPAN="3" BGCOLOR="#bed1b8" ALIGN="LEFT">id</TD></TR>
+      <TR><TD PORT="from_bulk_customer_id" COLSPAN="3" ALIGN="LEFT">from_bulk_customer_id</TD></TR>
+      <TR><TD PORT="to_pm_id" COLSPAN="3" ALIGN="LEFT">to_pm_id</TD></TR>
+      <TR><TD PORT="amount" COLSPAN="3" ALIGN="LEFT">amount</TD></TR>
+      <TR><TD PORT="pm_retail_bill_id" COLSPAN="3" ALIGN="LEFT">pm_retail_bill_id</TD></TR>
+      <TR><TD PORT="created" COLSPAN="3" ALIGN="LEFT">created</TD></TR>
+      <TR><TD ALIGN="LEFT" BGCOLOR="#f7f7f7">  </TD><TD ALIGN="RIGHT" BGCOLOR="#f7f7f7">0 rows</TD><TD ALIGN="RIGHT" BGCOLOR="#f7f7f7">  </TD></TR>
+    </TABLE>>
+    URL="tables/pm_retail_bill_transaction.html"
+    tooltip="pm_retail_bill_transaction"
+  ];
+}

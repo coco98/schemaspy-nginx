@@ -1,0 +1,37 @@
+// dot 2.38.0 on Linux 4.4.84-boot2docker
+// SchemaSpy rev 590
+digraph "hawker_stock_count" {
+  graph [
+    rankdir="RL"
+    bgcolor="#f7f7f7"
+    nodesep="0.18"
+    ranksep="0.46"
+    fontname="Helvetica"
+    fontsize="11"
+  ];
+  node [
+    fontname="Helvetica"
+    fontsize="11"
+    shape="plaintext"
+  ];
+  edge [
+    arrowsize="0.8"
+  ];
+  "hawker_stock_count" [
+    label=<
+    <TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" BGCOLOR="#ffffff">
+      <TR><TD COLSPAN="3" BGCOLOR="#9bab96" ALIGN="CENTER">hawker_stock_count</TD></TR>
+      <TR><TD PORT="id" COLSPAN="3" BGCOLOR="#bed1b8" ALIGN="LEFT">id</TD></TR>
+      <TR><TD PORT="hawker_id" COLSPAN="3" ALIGN="LEFT">hawker_id</TD></TR>
+      <TR><TD PORT="pos_id" COLSPAN="3" ALIGN="LEFT">pos_id</TD></TR>
+      <TR><TD PORT="op_id" COLSPAN="3" ALIGN="LEFT">op_id</TD></TR>
+      <TR><TD PORT="crate_id" COLSPAN="3" ALIGN="LEFT">crate_id</TD></TR>
+      <TR><TD PORT="product_id" COLSPAN="3" ALIGN="LEFT">product_id</TD></TR>
+      <TR><TD PORT="weight" COLSPAN="3" ALIGN="LEFT">weight</TD></TR>
+      <TR><TD PORT="created" COLSPAN="3" ALIGN="LEFT">created</TD></TR>
+      <TR><TD ALIGN="LEFT" BGCOLOR="#f7f7f7">  </TD><TD ALIGN="RIGHT" BGCOLOR="#f7f7f7">0 rows</TD><TD ALIGN="RIGHT" BGCOLOR="#f7f7f7">  </TD></TR>
+    </TABLE>>
+    URL="tables/hawker_stock_count.html"
+    tooltip="hawker_stock_count"
+  ];
+}
